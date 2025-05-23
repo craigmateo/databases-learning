@@ -139,4 +139,50 @@ CROSS JOIN student;
 
 This returns 60 rows (10 * 6).
 
+## Subqueries including Correlated and Non-correlated Subqueries
+
+Subqueries are queries embedded within another query.  
+They have higher priority than the outer query and are enclosed in parentheses `()`.
+
+In the example below, the subquery returns the program name, which the outer query uses to find professors who teach that program.
+
+---
+
+### Non-correlated Subquery
+
+A non-correlated subquery is independent of the outer query and can run on its own.
+
+***Example:**
+
+Find professors who teach a program that has students enrolled in 'Computer Science':
+
+```sql
+SELECT ProfessorName
+FROM professor
+WHERE ProgramName IN (
+    SELECT ProgramName
+    FROM student
+    WHERE ProgramName = 'Computer Science'
+);
+```
+
+Here, the inner query runs first and returns the program name(s) 'Computer Science', and then the outer query selects professors teaching that program.
+
+### Correlated Subquery
+A correlated subquery depends on the outer query and runs once for each row processed by the outer query.
+
+**Example:**
+Find professors who teach programs that have at least one student enrolled:
+
+```sql
+SELECT ProfessorName
+FROM professor p
+WHERE EXISTS (
+    SELECT 1
+    FROM student s
+    WHERE s.ProgramName = p.ProgramName
+);
+```
+
+In this example, for each professor (p), the subquery checks if there is at least one student (s) enrolled in the same program. If yes, the professor is included in the result.
 
