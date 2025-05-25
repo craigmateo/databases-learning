@@ -41,13 +41,13 @@ By the end of this module, you should be able to complete the following:
   A relationship between tables where the **primary key contains the foreign key**.  
   It is usually represented by a **solid line** in an ERD.
 
-  ![Identifying Relationship](m5_relationship1)  *(Replace with actual image or link)*
+  ![Identifying Relationship](images/relationship1.png)
 
 - **Non-Identifying Relationship:**  
   A relationship between tables where the **primary key does not contain the foreign key**.  
   It is usually represented by a **dotted line** in an ERD.
 
-  ![Non-Identifying Relationship](m5_relationship2)  *(Replace with actual image or link)*
+  ![Non-Identifying Relationship](images/relationship2)
 
 *Read Chapter 8 (Types of Relationship)*
 
